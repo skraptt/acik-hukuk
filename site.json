@@ -1,0 +1,66 @@
+{
+  "title": "Açık Hukuk",
+  "tagline": "Türk hukuku için açık kaynak AI araçları",
+  "description": "Hukukçuların yazdığı, herkesin ücretsiz kullanabildiği Türkçe AI skill'leri: ihtarname, kira ve iş sözleşmesi incelemesi, tüketici başvurusu, KVKK denetimi.",
+  "github": "https://github.com/skraptt/acik-hukuk",
+  "basePath": "/acik-hukuk/",
+  "areas": [
+    { "slug": "kira", "code": "TBK", "name": "Kira Hukuku", "blurb": "Kira sözleşmesi, tahliye taahhüdü, kira artışı" },
+    { "slug": "is", "code": "İş K.", "name": "İş Hukuku", "blurb": "İş sözleşmesi, fesih, fazla mesai, rekabet yasağı" },
+    { "slug": "kisisel-veriler", "code": "KVKK", "name": "Kişisel Veriler", "blurb": "Aydınlatma, açık rıza, çerezler, yurt dışına aktarım" },
+    { "slug": "borclar", "code": "TBK", "name": "Borçlar ve Sözleşmeler", "blurb": "İhtarname, temerrüt, ayıp ihbarı, sözleşmeden dönme" },
+    { "slug": "tuketici", "code": "TKHK", "name": "Tüketici Hukuku", "blurb": "Ayıplı mal ve hizmet, cayma hakkı, hakem heyeti" }
+  ],
+  "skills": [
+    {
+      "repo": "skraptt/tr-fair-design",
+      "branch": "main",
+      "areas": ["kisisel-veriler", "tuketici"],
+      "summary": "Sitenin veya uygulamanın kodunu yayından önce karanlık tasarımlar ve KVKK açısından inceler; her bulguyu dosya:satır kanıtı ve ilgili Türk mevzuatıyla raporlar.",
+      "basis": "KVKK, TKHK, 6563",
+      "audience": "Geliştiriciler ve hukukçular",
+      "runsIn": "Claude Code ve kodlama ajanları",
+      "reviewer": null
+    },
+    {
+      "repo": "skraptt/ihtarname-taslagi",
+      "branch": "main",
+      "areas": ["borclar", "kira"],
+      "summary": "Kira borcu, alacak, ayıp ihbarı, sözleşmeden dönme ve kira feshi için bilgileri adım adım sorar; noter veya KEP ile gönderilecek ihtarname taslağı hazırlar.",
+      "basis": "TBK, TTK m.18/3",
+      "audience": "Herkes",
+      "runsIn": "Claude, ChatGPT, Gemini",
+      "reviewer": null
+    },
+    {
+      "repo": "skraptt/kira-sozlesmesi-inceleme",
+      "branch": "main",
+      "areas": ["kira"],
+      "summary": "Konut ve çatılı işyeri kira sözleşmesini 15 başlıkta inceler: kira artışı, depozito, ceza koşulu, tahliye taahhüdü, döviz kirası.",
+      "basis": "TBK m.339 vd.",
+      "audience": "Kiracılar ve kiraya verenler",
+      "runsIn": "Claude, ChatGPT, Gemini",
+      "reviewer": null
+    },
+    {
+      "repo": "skraptt/is-sozlesmesi-kontrol",
+      "branch": "main",
+      "areas": ["is"],
+      "summary": "Deneme süresi, fazla mesai, yıllık izin, rekabet yasağı, cezai şart ve fesih hükümlerini işçi ya da işveren gözüyle inceler.",
+      "basis": "4857 s. İş K., TBK",
+      "audience": "İşçiler ve işverenler",
+      "runsIn": "Claude, ChatGPT, Gemini",
+      "reviewer": null
+    },
+    {
+      "repo": "skraptt/tuketici-hakem-basvurusu",
+      "branch": "main",
+      "areas": ["tuketici"],
+      "summary": "Ayıplı mal, ayıplı hizmet, cayma hakkı ve abonelik sorunlarında hakları açıklar; e-Devlet hakem heyeti başvurusu için metin hazırlar.",
+      "basis": "6502 s. TKHK",
+      "audience": "Tüketiciler",
+      "runsIn": "Claude, ChatGPT, Gemini",
+      "reviewer": null
+    }
+  ]
+}
