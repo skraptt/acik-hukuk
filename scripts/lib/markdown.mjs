@@ -36,6 +36,7 @@ function inline(text, opts) {
   s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   s = s.replace(/(^|[^*])\*([^*\s][^*]*)\*/g, '$1<em>$2</em>');
   s = s.replace(/\u0000(\d+)\u0000/g, (_, i) => `<code>${escapeHtml(codes[+i])}</code>`);
+  s = s.replace(/\u0001\s*/g, '<br>');
   return s;
 }
 
@@ -131,7 +132,9 @@ export function renderMarkdown(md, opts = {}) {
     ) {
       buf.push(lines[i++].trim());
     }
-    out.push(`<p>${inline(buf.join(' '), opts)}</p>`);
+    // Satır sonundaki ters bölü (\\) zorunlu satır sonu demektir.
+    const joined = buf.map((l) => (l.endsWith('\\') ? l.slice(0, -1) + '\u0001' : l)).join(' ');
+    out.push(`<p>${inline(joined, opts)}</p>`);
   }
   return out.join('\n');
 }

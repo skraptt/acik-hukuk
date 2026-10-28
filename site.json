@@ -4,6 +4,17 @@
   "description": "Hukukçuların yazdığı, herkesin ücretsiz kullanabildiği Türkçe AI skill'leri: ihtarname, kira ve iş sözleşmesi incelemesi, tüketici başvurusu, KVKK denetimi.",
   "github": "https://github.com/skraptt/acik-hukuk",
   "basePath": "/acik-hukuk/",
+  "operator": {
+    "name": "Tarik Temur",
+    "address": "[Sokak ve numara]\n[Posta kodu] Göttingen\nAlmanya / Deutschland",
+    "email": "[iletisim@ornek.org]"
+  },
+  "legal": {
+    "updated": "28.10.2026",
+    "supervisoryAuthority": "Aşağı Saksonya Veri Koruma Denetim Makamı'dır (LfD Niedersachsen, Prinzenstraße 5, 30159 Hannover, Almanya)",
+    "supervisoryAuthorityDe": "die Datenschutzaufsicht Niedersachsen (LfD Niedersachsen, Prinzenstraße 5, 30159 Hannover)",
+    "kvkkTransferBasis": "[KVKK m.9 kapsamındaki aktarım dayanağı hukukçu tarafından belirlenecek]"
+  },
   "areas": [
     { "slug": "kira", "code": "TBK", "name": "Kira Hukuku", "blurb": "Kira sözleşmesi, tahliye taahhüdü, kira artışı" },
     { "slug": "is", "code": "İş K.", "name": "İş Hukuku", "blurb": "İş sözleşmesi, fesih, fazla mesai, rekabet yasağı" },

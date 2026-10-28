@@ -67,10 +67,10 @@ const githubIcon = `<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden=
 
 const check = `<svg class="check" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9"></circle><path d="M6 10.5l2.5 2.5L14 7.5"></path></svg>`;
 
-function layout({ rel, title, description, body }) {
+function layout({ rel, title, description, body, lang = 'tr' }) {
   const fullTitle = title ? `${title} · ${site.title}` : `${site.title}: ${site.tagline}`;
   return `<!doctype html>
-<html lang="tr">
+<html lang="${lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -102,6 +102,10 @@ ${body}
       <span class="brand small"><span>açık<span class="accent">hukuk</span></span></span>
       <nav aria-label="Alt menü" class="footer-nav">
         <a href="${rel}hakkinda/">Hakkında</a>
+        <a href="${rel}kunye/">Künye / Impressum</a>
+        <a href="${rel}gizlilik/">Gizlilik</a>
+        <a href="${rel}datenschutz/" lang="de">Datenschutz</a>
+        <a href="${rel}kullanim-sartlari/">Kullanım şartları</a>
         <a href="${e(site.github)}" rel="noopener">GitHub</a>
       </nav>
     </div>
@@ -321,6 +325,34 @@ function notFound() {
   return layout({ rel, title: 'Sayfa bulunamadı', body });
 }
 
+// ---------- Yasal sayfalar ----------
+
+// content/legal/*.md içindeki {{operator.email}} gibi alanları site.json'dan doldurur.
+function fillTokens(md) {
+  return md.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (m, path) => {
+    const v = path.split('.').reduce((o, k) => (o == null ? o : o[k]), site);
+    if (v == null) {
+      console.warn(`! Tanımsız alan: ${m}`);
+      return m;
+    }
+    return String(v).replace(/\n/g, '\\\n');
+  });
+}
+
+const LEGAL = [
+  { slug: 'kunye', file: 'kunye.md', title: 'Künye / Impressum', lang: 'tr' },
+  { slug: 'gizlilik', file: 'gizlilik.md', title: 'Gizlilik ve kişisel veriler', lang: 'tr' },
+  { slug: 'datenschutz', file: 'datenschutz.md', title: 'Datenschutzerklärung', lang: 'de' },
+  { slug: 'kullanim-sartlari', file: 'kullanim-sartlari.md', title: 'Kullanım şartları', lang: 'tr' },
+];
+
+async function legalPage(p) {
+  const rel = '../';
+  const md = fillTokens(await readFile(join(root, 'content', 'legal', p.file), 'utf8'));
+  const body = `<div class="wrap section narrow"><article class="prose">${renderMarkdown(md)}</article></div>`;
+  return layout({ rel, title: p.title, body, lang: p.lang });
+}
+
 // ---------- Yaz ----------
 
 async function out(path, html) {
@@ -336,5 +368,9 @@ await out('404.html', notFound());
 await out('hakkinda/index.html', about());
 for (const s of skills) await out(`skill/${s.name}/index.html`, detail(s));
 for (const a of site.areas) await out(`alan/${a.slug}/index.html`, area(a));
+for (const p of LEGAL) await out(`${p.slug}/index.html`, await legalPage(p));
+
+const placeholders = JSON.stringify({ operator: site.operator, legal: site.legal }).match(/\[[^\]]+\]/g);
+if (placeholders) console.warn(`! Yayından önce doldurulması gereken alanlar: ${placeholders.join(', ')}`);
 await writeFile(join(dist, '.nojekyll'), '');
 console.log(`✓ ${skills.length} skill, ${site.areas.length} alan → dist/`);
