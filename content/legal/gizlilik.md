@@ -30,8 +30,13 @@ ABD) tarafından sağlanan GitHub Pages hizmetiyle yayımlanır. Siteyi
 ziyaret ettiğinizde tarayıcınız, sayfayı görüntüleyebilmek için GitHub'ın
 sunucularına bağlanır. GitHub'ın kendi açıklamasına göre bir GitHub Pages
 sitesi ziyaret edildiğinde, ziyaretçinin IP adresi güvenlik amacıyla
-kaydedilir ve saklanır. Bu kayıtlara biz erişmeyiz; saklama süresini GitHub
-belirler.
+kaydedilir ve saklanır.
+
+**Rollerin dağılımı:** GitHub bu kayıtları kendi güvenlik amaçları için ve
+kendi gizlilik bildirimine göre, bağımsız veri sorumlusu olarak işler. Bu
+kayıtlara biz erişmeyiz; saklama süresini GitHub belirler. Bizim
+sorumluluğumuz, siteyi GitHub Pages üzerinden yayımlama kararımızla ve bunun
+sonucunda tarayıcınızın GitHub'a bağlanmasıyla sınırlıdır.
 
 - **Amaç:** Sitenin güvenli ve kesintisiz sunulması, kötüye kullanımın
   önlenmesi.

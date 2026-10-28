@@ -28,8 +28,14 @@ Diese Website wird über den Dienst GitHub Pages der GitHub, Inc.
 (88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA) bereitgestellt.
 Beim Aufruf verbindet sich Ihr Browser mit den Servern von GitHub. Nach
 Angaben von GitHub wird beim Besuch einer GitHub-Pages-Seite die IP-Adresse
-der Besucher zu Sicherheitszwecken protokolliert und gespeichert. Wir haben
-auf diese Protokolle keinen Zugriff; die Speicherdauer bestimmt GitHub.
+der Besucher zu Sicherheitszwecken protokolliert und gespeichert.
+
+**Verteilung der Verantwortlichkeit:** GitHub verarbeitet diese Protokolle zu
+eigenen Sicherheitszwecken und nach eigener Datenschutzerklärung als
+eigenständig Verantwortlicher. Wir haben auf diese Protokolle keinen Zugriff;
+die Speicherdauer bestimmt GitHub. Unsere Verantwortlichkeit beschränkt sich
+auf die Entscheidung, die Website über GitHub Pages bereitzustellen, und die
+dadurch ausgelöste Verbindung Ihres Browsers zu GitHub.
 
 - **Zweck:** sichere und störungsfreie Bereitstellung der Website, Abwehr von
   Missbrauch.
